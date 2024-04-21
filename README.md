@@ -79,6 +79,22 @@ For demonstration purposes I have included the following ROMs, if you are the ow
 ### Adding your own ROMs
 To add your own ROMs you need to first create a binary dump of the ROM (or just download it) and convert that into a `uint8_t` array to put in a header file. I've written a little utility to do this called `compressROM`. This utility uses a very simple compression algorithm to reduce the size of the ROMs which helps if you want to add a loads of them (max 126 or ~1.5MB). As part of the compression you can specify if the ROM should have ZXC2 compatibility and also what the display ane shoule be. The utility outputs the appropriate header file to put into the `rominc` folder (or a folder of your choice). For Z80 or SNA snapshots see the section below.
 
+Usage: `./compressROM <options> infile '<displayname>'`
+
+Options:
+
+    -z create zxc2 compatible ROM
+    
+    -p pad space to 16kB, for 8kB ROMs only
+    
+    -b produce binary file instead of header
+    
+    -c check compression of binary file
+    
+    -d do not compress just create header, also ignores size check
+    
+  If no displayname given infile filename will be used.
+
 Once you've created the header you then need to add details about it to the `picoif2lite_lite.h` header file. This is in two parts.
 1. include the header file
 2. add it to the `roms` array in the position you want it to show in the ROM Selector
@@ -87,6 +103,16 @@ You can use the provided `picoif2lite_lite.h` header file as a guide.
 
 ## Z80 & SNA Snapshot Compatibility
 As of v0.3 the interface supports Z80 & SNA snapshots that have been converted into a ROM cartridge. This works with 48k and 128k snapshots. I've included a small utility, [Z80toROM](https://github.com/TomDDG/ZXPicoIF2Lite/blob/main/z80torom.c), which converts snapshots into the correct format and outputs a header file to include in the `rominc` folder as per normal ROMs.
+
+Usage: `./Z80toROM <options> infile.z80/sna '<displayname>'`
+
+Options:
+
+    -b produce binary file instead of header
+    
+    -s force final loader into screen
+    
+  If no displayname given infile filename will be used.
 
 The conversion of the snapshot to ROM is relatively simple and takes advantage of ROM paging and ability to switch off the interface. It works as follows:
 - ROM 0 has the loader and compressed Memory Bank 5 (memory lcoation 0x4000, the one with the screen)
