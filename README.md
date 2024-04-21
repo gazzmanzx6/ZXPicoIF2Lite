@@ -21,6 +21,7 @@ Includes a simple 9pin joystick connector (DE-9 often referred to as DB-9), wire
 The joystick circuit is pretty basic, it uses the 4075 OR chip to pull the GND pin of the joystick low when RD, A0, A12 & IORQ are low, high when any of them isn't low. This is basically simulating when the Spectrum is reading 67890 on the keyboard. If the output from the OR chip is low then if you move the joystick or press fire it grounds one of the data lines, either D0, D1, D2, D3 or D4. This creates the correct bit pattern for an `IN 0xFE` read on the Spectrum. Diodes protect the data line so it only zeros the bits when they are needed. Have +5v on the ground pin, other than when input is requested, is probably why autofire circuits don't work.
 
 ## Version Control
+- v0.7 Updated Retroleum DiagROM to v1.71 and ZX Spectrum Diagnostics to v0.38
 - v0.6 Simplified ROM includes adding a header to each ROM to replace romName & compatMode. New versions of compressROM & Z80toROM. **Latest Version
 - v0.5 ZX Spectrum machine code refactoring, LED matches ROMCS on/off, attempt to fix crash on reset. New version of Z80toROM with bug fixes. 
 - v0.4 fixed issue with snapshots not loading on earlier Spectrum models
@@ -66,8 +67,8 @@ All the files needed to make your own PCB are in the [Gerbers folder](./gerbers/
 ## The ROMs
 For demonstration purposes I have included the following ROMs, if you are the owner of any of these ROMs and do not want it including please just contact me and I'll remove it:
 - Original ZX Spectrum ROM (copyright Amstrad)
-- [Retroleum DiagROM v1.59 by Retroleum](http://blog.retroleum.co.uk/electronics-articles/a-diagnostic-rom-image-for-the-zx-spectrum/)
-- [ZX Spectrum Diagnostics v0.37 by Brendan Alford](https://github.com/brendanalford/zx-diagnostics/releases/tag/v0.37)
+- [Retroleum DiagROM v1.71 by Retroleum](http://blog.retroleum.co.uk/electronics-articles/a-diagnostic-rom-image-for-the-zx-spectrum/)
+- [ZX Spectrum Diagnostics v0.38 by Brendan Alford](https://github.com/brendanalford/zx-diagnostics/releases/tag/v0.37)
 - ZX Spectrum Test Cartridge (copyright Amstrad)
 - [128k RAM Tester by Paul Farrow](http://www.fruitcake.plus.com/Sinclair/Interface2/Cartridges/Interface2_RC_New_RAM_Tester.htm)
 - [Looking Glass ROM by Geoff Wearmouth as used on the Spectrum Next](https://gitlab.com/thesmog358/tbblue/-/tree/master/machines/next)
