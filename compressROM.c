@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
     }
 	// check for options
 	bool padSpace=false,binaryOn=false,testCompression=false,noCompression=false;
-	uint argNum=1;
+	unsigned int argNum=1;
 	uint8_t whichROM=0;
 	while(argv[argNum][0]=='-') {
 		if(argv[argNum][1]=='p') {
@@ -69,7 +69,7 @@ int main(int argc, char* argv[]) {
     //
 	if(padSpace==true&&filesize!=8192) error(2); // only pad 8kB ROMs
     uint8_t *readin;
-	uint i,j;
+	unsigned int i,j;
 	if(testCompression==false) {
 		if(noCompression==false) {
     		if(filesize%8192!=0) error(2); // doesn't seem to be a ROM so error	
@@ -109,7 +109,7 @@ int main(int argc, char* argv[]) {
 		} while(i<251&&(argv[argNum][i]!='.'||i<strlen(argv[argNum])-4));
 		fName[i] = '\0';
 		i=0;
-		uint j=0;
+		unsigned int j=0;
 		if((argv[argNum][j]>='0'&&argv[argNum][j]<='9')) {
 			headerName[j]='_';	// starts with a number
 			j++;
@@ -177,7 +177,7 @@ int main(int argc, char* argv[]) {
 }
 //
 void printOut(FILE *fp,uint8_t *buffer,uint16_t filesize,char *name,uint8_t cm,char *oname,bool noCompression) {
-    uint i,j;
+    unsigned int i,j;
     fprintf(fp,"    const uint8_t %s[]={ ",name);
 	if(noCompression==false) {
 		fprintf(fp,"0x%02x,",cm);	// compatibility mode
