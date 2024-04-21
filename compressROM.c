@@ -30,7 +30,7 @@ void printOut(FILE *fp,uint8_t *buffer,uint16_t filesize,char *name,uint8_t cm,c
 // convert binary ROM file to compressed const uint8_t array, pads 8kB ROMs with zeros if needed
 int main(int argc, char* argv[]) {
 	if (argc < 2) {
-        fprintf(stdout,"Usage compressrom <options> infile <displayname>\n"); 
+        fprintf(stdout,"Usage compressROM <options> infile <displayname>\n"); 
 		fprintf(stdout,"  Options:\n");		
 		fprintf(stdout,"    -z create zxc2 compatible ROM\n");
 		fprintf(stdout,"    -p pad space to 16kB, for 8kB ROMs only\n");
