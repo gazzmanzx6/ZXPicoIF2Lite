@@ -597,7 +597,7 @@ int main(int argc, char* argv[]) {
 	//char headerName[256];
 	//char outName[33];
 	i=0;
-	uint j=0;
+	unsigned int j=0;
 	if((fZ80[j]>='0'&&fZ80[j]<='9')) {
 		headerName[j]='_';	// starts with a number
 		j++;
