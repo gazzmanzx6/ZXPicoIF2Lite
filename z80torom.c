@@ -49,7 +49,7 @@ void printOut(FILE* fp, uint8_t* buffer, uint32_t filesize, char* name,uint8_t c
 //main
 int main(int argc, char* argv[]) {
 	if (argc < 2) {
-		fprintf(stdout, "Usage: Z80onROM <-b> infile.z80/sna <displayname>\n");
+		fprintf(stdout, "Usage: Z80toROM <-b> infile.z80/sna <displayname>\n");
 		fprintf(stdout, "  -b also create binary files\n");
 		fprintf(stdout, "  -s force final loader into screen\n");
 		fprintf(stdout,"  if no displayname given infile filename will be used\n");		
